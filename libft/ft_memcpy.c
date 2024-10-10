@@ -2,5 +2,34 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t size)
 {
-	
+	unsigned char	*temp_dst;
+	unsigned char	*temp_src;
+
+	if (!dst && !src)
+		return (dst);
+	temp_dst = (unsigned char *) dst;
+	temp_src = (unsigned char *) src;
+	while (size > 0)
+	{
+		*(temp_dst++) = *(temp_src++);
+		size--;
+	}
+	return (dst);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char src[50] = "Hello, World!";
+	char dst[50];
+
+	printf("Avant ft_memcpy:\n");
+	printf("Source: %s\n", src);
+	printf("Destination: %s\n", dst);
+	ft_memcpy(dst, src, 13);
+	printf("\nApres ft_memcpy:\n");
+	printf("Source: %s\n", src);
+	printf("Destination: %s\n", dst);
+	return (0);
+}
+*/
