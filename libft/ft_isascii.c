@@ -7,3 +7,13 @@ int	ft_isascii(int c)
 	else
 		return (0);
 }
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	char test = 'a';
+	printf("%d\n", ft_isascii(test));
+	return (0);
+}
+*/

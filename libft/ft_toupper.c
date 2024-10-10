@@ -6,3 +6,13 @@ int	ft_toupper(int c)
 		c -= 32;
 	return (c);
 }
+/*
+#include <stdio.h>
+int main(void)
+{
+	char test;
+	test = ft_toupper('a');
+	printf("%c\n", test);
+	return (0);
+}
+*/

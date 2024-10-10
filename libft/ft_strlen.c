@@ -11,3 +11,16 @@ size_t	ft_strlen(char *str)
 	}
 	return (i);
 }
+/*
+#include <stdio.h>
+
+int main(void)
+{
+	char *test = "Hello World!";
+	size_t size;
+
+	size = ft_strlen(test);
+	printf("%ld\n", size);
+	return (0);
+}
+*/

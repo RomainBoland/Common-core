@@ -6,3 +6,13 @@ int	ft_tolower(int c)
 		c += 32;
 	return (c);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char test;
+	test = ft_tolower('A');
+	printf("%c\n", test);
+	return (0);
+}
+*/

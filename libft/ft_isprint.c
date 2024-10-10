@@ -7,3 +7,13 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	char test = 55;
+	printf("%d\n", ft_isprint(test));
+	return (0);
+}
+*/
