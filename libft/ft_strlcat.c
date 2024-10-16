@@ -16,15 +16,17 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	else
 	{
 		ft_memcpy(dst + dst_size, src, dstsize - dst_size - 1);
-		dst[dst_size -1] = '\0';
+		dst[dstsize - 1] = '\0';
 	}
 	return (dst_size + src_size);
 }
-
+/*
 #include <stdio.h>
 int	main(void)
 {
 	char str[50] = "Hello World!";
-	printf("%lld\n", ft_strlcat(str, " Comment ca va ?", 50));
+	printf("%lld\n", ft_strlcat(str, " Comment ca va ?", 23));
+	printf("%s\n", str);
 	return (0);
 }
+*/
