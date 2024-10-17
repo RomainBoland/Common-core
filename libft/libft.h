@@ -38,5 +38,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_bzero(void *s, size_t n);
 char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 char    *ft_strdup(const char *src);
+void *ft_calloc(size_t count, size_t size);
 
 #endif
