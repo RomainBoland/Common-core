@@ -56,7 +56,6 @@ static void    ft_free(char **str, int len)
     {
         len--;
         free(str[len]);
-        
     }
     free(str);
 }
@@ -85,7 +84,7 @@ char    **ft_split(char *str, char charset)
     split_tab[i] = (NULL);
     return (split_tab);
 }
-
+/*
 #include <stdio.h>
 int main(void)
 {
@@ -105,3 +104,4 @@ int main(void)
     free(result);
     return (0);
 }
+*/
