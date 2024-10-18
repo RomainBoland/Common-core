@@ -16,7 +16,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 		i++;
 	while (is_set(set, s1[end]) && end >= i)
 		end--;
-
 	return (to_trim(s1, i, end - i + 1));
 }
 
