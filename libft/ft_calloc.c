@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/20 09:24:40 by rboland           #+#    #+#             */
+/*   Updated: 2024/10/20 09:32:43 by rboland          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
@@ -7,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	i = 0;
 	tmp = malloc(count * size);
-	if(!tmp)
+	if (!tmp)
 		return (NULL);
 	while (i < size * count)
 	{

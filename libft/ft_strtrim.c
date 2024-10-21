@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/20 10:54:25 by rboland           #+#    #+#             */
+/*   Updated: 2024/10/20 10:54:27 by rboland          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	is_set(const char *set, char c);
@@ -46,7 +58,7 @@ static int	is_set(const char *set, char c)
 	i = 0;
 	while (set[i])
 	{
-		if(set[i] == c)
+		if (set[i] == c)
 			return (1);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 10:54:20 by rboland           #+#    #+#             */
-/*   Updated: 2024/10/14 10:55:36 by rboland          ###   ########.fr       */
+/*   Updated: 2024/10/20 12:31:53 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_atoi(char *str)
 	result = 0;
 	signe = 1;
 	i = 0;
-	while (str[i] == 32 || str[i] == '\t')
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -37,6 +37,7 @@ int	ft_atoi(char *str)
 	return (result * signe);
 }
 /*
+#include <stdio.h>
 int main(int argc, char *argv[])
 {
 	(void)argc;

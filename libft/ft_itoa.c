@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/20 09:34:50 by rboland           #+#    #+#             */
+/*   Updated: 2024/10/21 09:48:50 by rboland          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static size_t	count_nbrs(int	n)
+static size_t	count_nbrs(int n)
 {
 	int	i;
 
@@ -13,17 +25,19 @@ static size_t	count_nbrs(int	n)
 	return (i);
 }
 
-static void	fill_tab(char *tab, int n, size_t len)
+static void	fill_tab(char *tab, int n, size_t len, int sign)
 {
 	size_t	i;
 
-	i = 1;
+	i = 0;
 	while (i < len)
 	{
-		tab[len - i] = (n % 10) + '0';
+		tab[len - i - 1] = (n % 10) + '0';
 		n = n / 10;
 		i++;
 	}
+	if (sign)
+		tab[0] = '-';
 	tab[len] = '\0';
 }
 
@@ -31,9 +45,11 @@ char	*ft_itoa(int n)
 {
 	char	*tab;
 	size_t	len;
-	int	sign;
+	int		sign;
 
 	sign = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n < 0)
@@ -48,21 +64,17 @@ char	*ft_itoa(int n)
 	tab = (char *)malloc((len + 1) * sizeof(char));
 	if (!tab)
 		return (NULL);
-	if (sign)
-		tab[0] = '-';
-	fill_tab(tab, n, len);
+	fill_tab(tab, n, len, sign);
 	return (tab);
 }
 /*
-#include <stdio.h>
-
 int	main(void)
 {
-	int	n = -154666;
+	int	n = 1576;
 	char *tab;
 
 	tab = ft_itoa(n);
-	printf("%s", tab);
+	printf("%s\n", tab);
 	return (0);
 }
 */
