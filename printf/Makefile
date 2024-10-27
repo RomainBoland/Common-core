@@ -1,7 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rboland <rboland@student.s19.be>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/26 12:01:29 by rboland           #+#    #+#              #
+#    Updated: 2024/10/26 12:01:29 by rboland          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 C = gcc
 CFLAGS = -Wall -Wextra -Werror
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
 SRC = 
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
