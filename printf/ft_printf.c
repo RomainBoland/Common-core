@@ -55,7 +55,7 @@ int	ft_printf(const char *format, ...)
 		else
 		{
 			format++;
-			count += format_finder(*format, args);// function to chose wich way of printing the var and that call the corresponding function, returns the nbr of character printed
+			count += format_finder(*format, args);
 		}
 		format++;
 	}
