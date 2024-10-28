@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <limits.h>
 
+/*
+THIS MAIN'S PURPOSES IS TO TEST YOUR CODE
+I HAVENT WRITTEN THESE TEST, FOUND IT ON 
+https://github.com/Kuninoto/42_ft_printf/blob/master/lvl_1_ft_printf/main.c
+
+THANK HIM :)
+*/
 int main(void)
 {
 	int output_OG;

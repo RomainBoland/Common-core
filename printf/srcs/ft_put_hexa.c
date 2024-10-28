@@ -12,16 +12,13 @@
 
 #include "ft_printf.h"
 
-int ft_put_hexa(unsigned int nbr, int upper_case)
-{
-
-}
+static size_t	digits_count(int nbr)
 {
 	size_t	count;
 
 	count = 0;
-	if (nbr <= 0)
-		count++;
+	if (nbr == 0)
+		return (1);
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;
@@ -30,27 +27,21 @@ int ft_put_hexa(unsigned int nbr, int upper_case)
 	return (count);
 }
 
-static void	print_hexa(int nbr)
+static void	print_hexa(unsigned int nbr, int upper_case)
 {
-	static char	digits[] = "0123456789";
+	static char	upper_digits[] = "0123456789ABCDEF";
+	static char lower_digits[] = "0123456789abcdef";
 
-	if (nbr > 9)
-		put_int(nbr / 10);
-	write(1, &digits[nbr % 10], 1);
+	if (nbr >= 16)
+		put_hexa(nbr / 16, upper_case);
+	if (upper_case)
+		write(1, &upper_digits[nbr % 16], 1);
+	else
+		write(1, &lower_digits[nbr % 16], 1);
 }
 
 int ft_put_hexa(unsigned int nbr, int upper_case)
 {
-	int	len;
-
-	if (nbr == INT_MIN)
-		return (write(1, "-2147483648", 11));
-	len = digits_count(nbr);
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr *= -1;
-	}
-	print_hexa(nbr);
-	return(len);
+	print_hexa(nbr, upper_case);
+	return(digits_count(nbr));
 }
