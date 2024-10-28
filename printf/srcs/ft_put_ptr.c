@@ -21,7 +21,7 @@ static size_t	digits_count(unsigned long long nbr)
 		return (1);
 	while (nbr != 0)
 	{
-		nbr++;
+		count++;
 		nbr = nbr / 16;
 	}
 	return (count);

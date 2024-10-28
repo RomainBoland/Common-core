@@ -25,7 +25,7 @@ static int	format_finder(char form_spec, va_list args)
 		return (ft_put_str(va_arg(args,char *)));
 	else if (form_spec == 'p')
 		return (ft_put_ptr(va_arg(args, void *)));
-	else if (form_spec == 'd' || 'i')
+	else if (form_spec == 'd' || form_spec == 'i')
 		return (ft_put_int(va_arg(args, int)));
 	else if (form_spec == 'u')
 		return (ft_put_unsigned(va_arg(args, unsigned int)));
@@ -34,30 +34,35 @@ static int	format_finder(char form_spec, va_list args)
 	else if (form_spec == 'X')
 		return (ft_put_hexa(va_arg(args, ssize_t), 1));
 	else if (form_spec == '%')
-		return (write(1, "%", 1));
+	{
+		ft_putchar_fd('%', 1);
+		return (1);
+	}
 	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
+	int	i;
 	va_list	args;
 	int	count;
 
+	i = 0;
 	va_start(args, format);
 	count = 0;
-	while(*format)
+	while(format[i])
 	{
-		if (*format != '%')
+		if (format[i] != '%')
 		{
-			ft_putchar_fd(*format, 1);
+			ft_putchar_fd(format[i], 1);
 			count++;
 		}
 		else
 		{
-			format++;
-			count += format_finder(*format, args);
+			i++;
+			count += format_finder(format[i], args);
 		}
-		format++;
+		i++;
 	}
 	va_end(args);
 	return (count);
