@@ -41,6 +41,6 @@ int	ft_put_ptr(void *ptr)
 	if (ptr == NULL)
 		return (write(1, "(nil)", 5));
 	write(1, "0x", 2);
-	printf_ptr((unsigned long long)ptr);
+	print_ptr((unsigned long long)ptr);
 	return (digits_count((unsigned long long)ptr) + 2);
 }

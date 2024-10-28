@@ -32,7 +32,7 @@ static void	print_int(int nbr)
 	static char	digits[] = "0123456789";
 
 	if (nbr > 9)
-		put_int(nbr / 10);
+		print_int(nbr / 10);
 	write(1, &digits[nbr % 10], 1);
 }
 

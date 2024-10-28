@@ -33,7 +33,7 @@ static void	print_hexa(unsigned int nbr, int upper_case)
 	static char lower_digits[] = "0123456789abcdef";
 
 	if (nbr >= 16)
-		put_hexa(nbr / 16, upper_case);
+		print_hexa(nbr / 16, upper_case);
 	if (upper_case)
 		write(1, &upper_digits[nbr % 16], 1);
 	else

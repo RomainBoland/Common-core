@@ -32,12 +32,12 @@ static void	print_unsigned(unsigned int nbr)
 	static char	digits[] = "0123456789";
 
 	if (nbr > 9)
-		put_unsigned(nbr / 10);
+		print_unsigned(nbr / 10);
 	write(1, &digits[nbr % 10], 1);
 }
 
 int	ft_put_unsigned(unsigned int nbr)
 {
-	put_unsigned(nbr);
+	print_unsigned(nbr);
 	return (digits_count(nbr));
 }
