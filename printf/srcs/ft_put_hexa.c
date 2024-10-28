@@ -15,8 +15,8 @@
 static size_t	print_hexa(unsigned int nbr, int upper_case)
 {
 	static char	upper_digits[] = "0123456789ABCDEF";
-	static char lower_digits[] = "0123456789abcdef";
-	size_t count;
+	static char	lower_digits[] = "0123456789abcdef";
+	size_t		count;
 
 	count = 0;
 	if (nbr >= 16)
@@ -28,7 +28,7 @@ static size_t	print_hexa(unsigned int nbr, int upper_case)
 	return (count + 1);
 }
 
-int ft_put_hexa(unsigned int nbr, int upper_case)
+int	ft_put_hexa(unsigned int nbr, int upper_case)
 {
 	if (nbr == 0)
 	{

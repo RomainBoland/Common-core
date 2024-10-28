@@ -49,5 +49,5 @@ int	ft_put_int(int nbr)
 		nbr *= -1;
 	}
 	print_int(nbr);
-	return(len);
+	return (len);
 }

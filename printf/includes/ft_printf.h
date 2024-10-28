@@ -18,10 +18,10 @@
 # include <limits.h>
 
 int	ft_printf(const char *format, ...);
-int ft_put_str(char *str);
+int	ft_put_str(char *str);
 int	ft_put_int(int nbr);
-int	ft_put_unsigned(unsigned int);
-int	ft_put_ptr(void *);
-int ft_put_hexa(unsigned int nbr, int upper_case);
+int	ft_put_unsigned(unsigned int nbr);
+int	ft_put_ptr(void *ptr);
+int	ft_put_hexa(unsigned int nbr, int upper_case);
 
 #endif

@@ -22,7 +22,7 @@ static int	format_finder(char form_spec, va_list args)
 		return (1);
 	}
 	else if (form_spec == 's')
-		return (ft_put_str(va_arg(args,char *)));
+		return (ft_put_str(va_arg(args, char *)));
 	else if (form_spec == 'p')
 		return (ft_put_ptr(va_arg(args, void *)));
 	else if (form_spec == 'd' || form_spec == 'i')
@@ -43,14 +43,14 @@ static int	format_finder(char form_spec, va_list args)
 
 int	ft_printf(const char *format, ...)
 {
-	int	i;
+	int		i;
 	va_list	args;
-	int	count;
+	int		count;
 
 	i = 0;
 	va_start(args, format);
 	count = 0;
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] != '%')
 		{
