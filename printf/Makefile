@@ -9,27 +9,26 @@
 #    Updated: 2024/10/26 12:01:29 by rboland          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-C = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRC = 
-OBJ = $(SRC:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I./includes/
+RM = rm -rf
 NAME = libftprintf.a
-INCLUDES = -I. -I$(LIBFT_DIR)
-all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJ)
-		ar -rc $(NAME) $(OBJ)
-		ranlib $(NAME)
+SRCS = ft_printf.c srcs/ft_put_hexa.c srcs/ft_put_int.c srcs/ft_put_ptr.c srcs/ft_put_str.c srcs/ft_put_unsigned.c
+OBJS = $(SRCS:.c=.o)
 
-%.o: %.c
-		$(CC) $(CFLAGS) -c $< -o $@
+all: $(NAME)
 
+$(NAME): $(OBJS)
+	$(MAKE) -C ./libft
+	cp libft/libft.a $(NAME)
+	ar rc $(NAME) $(OBJS)
 clean:
-		rm -rf *.o
-
+	$(MAKE) clean -C ./libft
+	$(RM) $(OBJS)
 fclean: clean
-		rm -f $(NAME)
-
+	$(MAKE) fclean -C ./libft
+	$(RM) $(NAME)
 re: fclean all
 
 .PHONY: all clean fclean re
