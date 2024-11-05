@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 10:18:19 by rboland           #+#    #+#             */
-/*   Updated: 2024/11/05 17:01:50 by rboland          ###   ########.fr       */
+/*   Updated: 2024/11/05 17:19:03 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,21 @@ size_t	ft_strlen(const char *str)
 		i++;
 	}
 	return (i);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t size)
+{
+	unsigned char	*temp_dst;
+	unsigned char	*temp_src;
+
+	if (!dst && !src)
+		return (dst);
+	temp_dst = (unsigned char *) dst;
+	temp_src = (unsigned char *) src;
+	while (size > 0)
+	{
+		*(temp_dst++) = *(temp_src++);
+		size--;
+	}
+	return (dst);
 }
