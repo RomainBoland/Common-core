@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:02:32 by rboland           #+#    #+#             */
-/*   Updated: 2024/10/28 11:02:32 by rboland          ###   ########.fr       */
+/*   Updated: 2024/10/31 14:06:17 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	print_ptr(unsigned long long nbr)
 int	ft_put_ptr(void *ptr)
 {
 	if (ptr == NULL)
-		return (write(1, "(nil)", 5));
+		return (write(1, "0x0", 3));
 	write(1, "0x", 2);
 	print_ptr((unsigned long long)ptr);
 	return (digits_count((unsigned long long)ptr) + 2);
