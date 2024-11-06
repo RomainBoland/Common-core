@@ -6,34 +6,90 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:32:11 by rboland           #+#    #+#             */
-/*   Updated: 2024/11/05 17:01:51 by rboland          ###   ########.fr       */
+/*   Updated: 2024/11/06 17:38:37 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *get_next_line(int fd)
+/* Search c character in s string and return a pointer to
+ * the first occurence, returns NULL if not found */
+
+char	*ft_strchr(const char *s, int c)
 {
-    static char *stash;
-    char        *buf[BUFFER_SIZE + 1];
-    char        *result;
+	int		i;
+	char	tmp_c;
 
-    read(fd, *buf, BUFFER_SIZE);
-    
-    /*read fd files and put it into buffer
-    ft_strjoin de buffer vers stash
-    
+	tmp_c = (char)c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == tmp_c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == tmp_c)
+		return ((char *)&s[i]);
+	return (NULL);
+}
 
-    if stash contain a '\0' or a '\n' 
-        means we reached the end of the file or the end of the line
-        if it is the end, result = stash
-        else then its \n, we send stash from 0 to <=\n
-        malloc result on len 0 to <=\n +1
-        add '\0' at the end
+/* Takes a pointer to a location in a string, malloc
+ * from this pointer to the end, fill it by copying
+ * and returns the new string */
 
-        we clean the stash from 0 to <=\n
+char	*ft_strdup(char *src)
+{
+	int		i;
+	int		len;
+	char	*copy;
 
-    else
+	len = ft_strlen(src);
+	i = 0;
+	copy = (char *)malloc((len + 1) * sizeof(char));
+	if (!copy)
+		return (NULL);
+	while (src[i])
+	{
+		copy[i] = src[i];
+		i++;
+	}
+	copy[i] = 0;
+	free(src);
+	return (copy);
+}
 
-    */
+char	*get_next_line(int fd)
+{
+	char		buff[BUFFER_SIZE + 1];
+	static char	*stash;
+	char		*newline_pos;
+	int			bytes_read;
+	char		*line;
+
+	if (fd < 0)
+		return (NULL);
+	stash = NULL;
+	newline_pos = ft_strchr(stash, '\n');
+	while (newline_pos == NULL)
+	{
+		bytes_read = read(fd, buff, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			break ;
+		buff[bytes_read] = '\0';
+		stash = ft_strjoin(stash, buff);
+		newline_pos = ft_strchr(stash, '\n');
+	}
+	if (newline_pos)
+	{
+		line = ft_substr(stash, 0, newline_pos - stash + 1);
+		stash = ft_strdup(newline_pos + 1);
+		return (line);
+	}
+	else if (stash)
+	{
+		line = ft_strdup(stash);
+		stash = NULL;
+		return (line);
+	}
+	return (NULL);
 }
