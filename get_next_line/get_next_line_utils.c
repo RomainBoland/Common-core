@@ -12,8 +12,6 @@
 
 #include "get_next_line.h"
 
-/* Function to copy a part of memory into another, required for strjoin */
-
 void	*ft_memcpy(void *dst, const void *src, size_t size)
 {
 	unsigned char	*temp_dst;
@@ -31,22 +29,15 @@ void	*ft_memcpy(void *dst, const void *src, size_t size)
 	return (dst);
 }
 
-/* Do I have to explain this ? Required for strjoin */
-
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
 	i = 0;
 	while (str[i])
-	{
 		i++;
-	}
 	return (i);
 }
-
-/* Malloc a new string from the length of 2 others, concatenate them into
- * the new one, returns the new string */
 
 char	*ft_strjoin(char *s1, const char *s2)
 {
@@ -65,9 +56,6 @@ char	*ft_strjoin(char *s1, const char *s2)
 	free(s1);
 	return (str);
 }
-
-/* Malloc a new string of len + 1 size. Copy from *s string from start index
- * returns the new string */
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {

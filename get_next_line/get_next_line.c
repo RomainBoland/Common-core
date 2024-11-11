@@ -22,13 +22,13 @@ char	*ft_strchr(const char *s, int c)
 
 	tmp_c = (char)c;
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		if (s[i] == tmp_c)
 			return ((char *)&s[i]);
 		i++;
 	}
-	if (s[i] == tmp_c)
+	if (s && s[i] == tmp_c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
@@ -54,42 +54,74 @@ char	*ft_strdup(char *src)
 		i++;
 	}
 	copy[i] = 0;
-	free(src);
 	return (copy);
 }
 
-char	*get_next_line(int fd)
+static int init_and_read(int fd, char **stash, char *buff)
 {
-	char		buff[BUFFER_SIZE + 1];
-	static char	*stash;
-	char		*newline_pos;
-	int			bytes_read;
-	char		*line;
+    int bytes_read;
 
-	if (fd < 0)
-		return (NULL);
-	stash = NULL;
-	newline_pos = ft_strchr(stash, '\n');
-	while (newline_pos == NULL)
-	{
-		bytes_read = read(fd, buff, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			break ;
-		buff[bytes_read] = '\0';
-		stash = ft_strjoin(stash, buff);
-		newline_pos = ft_strchr(stash, '\n');
-	}
-	if (newline_pos)
-	{
-		line = ft_substr(stash, 0, newline_pos - stash + 1);
-		stash = ft_strdup(newline_pos + 1);
-		return (line);
-	}
-	else if (stash)
-	{
-		line = ft_strdup(stash);
-		stash = NULL;
-		return (line);
-	}
-	return (NULL);
+    if (!(*stash))
+    {
+        *stash = ft_strdup("");
+        if (!(*stash))
+            return (-1);
+    }
+    bytes_read = read(fd, buff, BUFFER_SIZE);
+    if (bytes_read < 0)
+    {
+        free(*stash);
+        *stash = NULL;
+        return (-1);
+    }
+    if (bytes_read > 0)
+    {
+        buff[bytes_read] = '\0';
+        *stash = ft_strjoin(*stash, buff);
+        if (!(*stash))
+            return (-1);
+    }
+    return (bytes_read);
+}
+static char *get_line_and_update_stash(char **stash, char *newline_pos)
+{
+    char *line;
+
+    if (newline_pos)
+    {
+        line = ft_substr(*stash, 0, newline_pos - *stash + 1);
+        *stash = ft_strdup(newline_pos + 1);
+    }
+    else
+    {
+        line = ft_strdup(*stash);
+        free(*stash);
+        *stash = NULL;
+    }
+    return (line);
+}
+char *get_next_line(int fd)
+{
+    char buff[BUFFER_SIZE + 1];
+    static char *stash;
+    char *newline_pos;
+    int bytes_read;
+
+    if (fd < 0 || BUFFER_SIZE <= 0)
+        return (NULL);
+    
+    while (1)
+    {
+        newline_pos = ft_strchr(stash, '\n');
+        if (newline_pos)
+            return (get_line_and_update_stash(&stash, newline_pos));
+
+        bytes_read = init_and_read(fd, &stash, buff);
+        if (bytes_read < 0)
+            return (NULL);
+        if (bytes_read == 0 && stash && *stash)
+            return (get_line_and_update_stash(&stash, NULL));
+        if (bytes_read == 0)
+            return (NULL);
+    }
 }
