@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 10:18:19 by rboland           #+#    #+#             */
-/*   Updated: 2024/11/06 17:38:46 by rboland          ###   ########.fr       */
+/*   Updated: 2024/11/12 17:23:50 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -45,11 +47,16 @@ char	*ft_strjoin(char *s1, const char *s2)
 	size_t	len1;
 	size_t	len2;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	str = malloc((len1 + len2 + 1) * sizeof(char));
 	if (!str)
+	{
+		free(s1);
 		return (NULL);
+	}
 	ft_memcpy(str, s1, len1);
 	ft_memcpy(str + len1, s2, len2);
 	str[len1 + len2] = '\0';
