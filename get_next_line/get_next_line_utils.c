@@ -55,6 +55,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	if (!str)
 	{
 		free(s1);
+		s1 = NULL;
 		return (NULL);
 	}
 	ft_memcpy(str, s1, len1);
@@ -87,4 +88,22 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	str[i] = 0;
 	return (str);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int		i;
+	char	tmp_c;
+
+	tmp_c = (char)c;
+	i = 0;
+	while (s && s[i])
+	{
+		if (s[i] == tmp_c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s && s[i] == tmp_c)
+		return ((char *)&s[i]);
+	return (NULL);
 }
