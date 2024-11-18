@@ -49,10 +49,7 @@ char	*ft_strdup(char *src)
 	i = 0;
 	copy = (char *)malloc((len + 1) * sizeof(char));
 	if (!copy)
-	{
-		free(src);
 		return (NULL);
-	}
 	while (src[i])
 	{
 		copy[i] = src[i];
@@ -91,12 +88,15 @@ static int	init_and_read(int fd, char **stash, char *buff)
 
 static char	*get_line_and_update_stash(char **stash, char *newline_pos)
 {
+	char	*new_stash;
 	char	*line;
 
 	if (newline_pos)
 	{
 		line = ft_substr(*stash, 0, newline_pos - *stash + 1);
-		*stash = ft_strdup(newline_pos + 1);
+		new_stash = ft_strdup(newline_pos + 1);
+		free(*stash);
+		*stash = new_stash;
 	}
 	else
 	{
@@ -106,6 +106,10 @@ static char	*get_line_and_update_stash(char **stash, char *newline_pos)
 	}
 	return (line);
 }
+/*Declare the buffer and the stash, verify BUFFER_SIZE & fd.
+ Loop as long as we dont return something, it means as long as 
+we dont reach a \n OR the end of the file 
+OR we encounter an empty file OR an*/
 
 char	*get_next_line(int fd)
 {
@@ -116,9 +120,11 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+	newline_pos = 0;
 	while (1)
 	{
-		newline_pos = ft_strchr(stash, '\n');
+		if (stash)
+			newline_pos = ft_strchr(stash, '\n');
 		if (newline_pos)
 			return (get_line_and_update_stash(&stash, newline_pos));
 		bytes_read = init_and_read(fd, &stash, buff);
@@ -138,7 +144,9 @@ int	main(void)
 {
 	char	*result;
 	int		fd;
+	int i;
 
+	i = 1;
 	fd = open("test.txt", O_RDONLY);
 	if (fd == -1)
 	{
@@ -148,10 +156,10 @@ int	main(void)
 	result = get_next_line(fd);
 	while (result)
 	{
-		printf(" Result : %s", result);
+		printf("(%d) Result : %s",i , result);
 		free(result);
 		result = get_next_line(fd);
+		i++;
 	}
 	return (0);
-}
-*/
+}*/

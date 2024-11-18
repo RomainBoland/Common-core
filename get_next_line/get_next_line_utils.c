@@ -61,6 +61,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	ft_memcpy(str + len1, s2, len2);
 	str[len1 + len2] = '\0';
 	free(s1);
+	s1 = NULL;
 	return (str);
 }
 
