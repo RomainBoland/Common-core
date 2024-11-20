@@ -1,6 +1,10 @@
-LIGNE 1
-LIGNE 2
-
-LIGNE 4
-NULL
-LIGNE 6
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
