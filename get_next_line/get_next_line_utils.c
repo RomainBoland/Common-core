@@ -53,16 +53,11 @@ char	*ft_strjoin(char *s1, const char *s2)
 	len2 = ft_strlen(s2);
 	str = malloc((len1 + len2 + 1) * sizeof(char));
 	if (!str)
-	{
-		free(s1);
-		s1 = NULL;
 		return (NULL);
-	}
 	ft_memcpy(str, s1, len1);
 	ft_memcpy(str + len1, s2, len2);
 	str[len1 + len2] = '\0';
 	free(s1);
-	s1 = NULL;
 	return (str);
 }
 

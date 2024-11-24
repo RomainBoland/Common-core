@@ -16,12 +16,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 8192
-# endif
-# if BUFFER_SIZE > 8192
+# if BUFFER_SIZE > 100000
 #  undef BUFFER_SIZE
-#  define BUFFER_SIZE 8192
+# endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
 # endif
 
 void		*ft_memcpy(void *dst, const void *src, size_t size);

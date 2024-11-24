@@ -48,7 +48,7 @@ static int	init_and_read(int fd, char **stash, char *buff)
 	if (bytes_read <= 0)
 	{
 		if (bytes_read == 0 && *stash && **stash)
-			return (bytes_read);
+			return (0);
 		free(*stash);
 		*stash = NULL;
 		return (-1);
@@ -83,10 +83,6 @@ static char	*get_line_and_update_stash(char **stash, char *newline_pos)
 	}
 	return (line);
 }
-/*Declare the buffer and the stash, verify BUFFER_SIZE & fd.
-* Loop as long as we dont return something, it means as long as 
-* we dont reach a \n OR the end of the file
-* OR we encounter an empty file OR an*/
 
 char	*get_next_line(int fd)
 {
@@ -103,7 +99,7 @@ char	*get_next_line(int fd)
 		if (newline_pos)
 			return (get_line_and_update_stash(&stash, newline_pos));
 		bytes_read = init_and_read(fd, &stash, buff);
-		if (bytes_read < 0)
+		if (bytes_read < 0 || !stash)
 			return (NULL);
 		if (bytes_read == 0 && stash && *stash)
 			return (get_line_and_update_stash(&stash, NULL));
@@ -128,12 +124,12 @@ int	main(void)
 		printf("Erreur lors de l ouverture du fichier");
 		return (1);
 	}
-	result = get_next_line(fd);
+	result = get_next_line(0);
 	while (result)
 	{
 		printf("(%d) Result : %s",i , result);
 		free(result);
-		result = get_next_line(fd);
+		result = get_next_line(0);
 		i++;
 	}
 	return (0);
