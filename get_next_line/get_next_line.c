@@ -124,12 +124,12 @@ int	main(void)
 		printf("Erreur lors de l ouverture du fichier");
 		return (1);
 	}
-	result = get_next_line(0);
+	result = get_next_line(fd);
 	while (result)
 	{
 		printf("(%d) Result : %s",i , result);
 		free(result);
-		result = get_next_line(0);
+		result = get_next_line(fd);
 		i++;
 	}
 	return (0);
