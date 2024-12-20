@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:20:55 by rboland           #+#    #+#             */
-/*   Updated: 2024/10/22 15:55:52 by rboland          ###   ########.fr       */
+/*   Updated: 2024/12/20 22:30:43 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf.h"
+# include "get_next_line_bonus.h"
 
 typedef struct s_list
 {
