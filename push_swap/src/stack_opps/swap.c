@@ -10,3 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
+
+int	swap_a()
+{
+	ft_printf("sa\n");
+	return (1);
+}
+
+int	swap_b()
+{
+	ft_printf("sb\n");
+	return (1);
+}
+
+int swap_s()
+{
+	ft_printf("ss\n");
+	return (1);
+}

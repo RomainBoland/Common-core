@@ -15,11 +15,4 @@
 
 # include "../libft/includes/libft.h"
 
-typedef struct s_stack
-{
-	int				pos;
-	int				*content;
-	struct s_stack	*next;
-}	t_stack;
-
 #endif

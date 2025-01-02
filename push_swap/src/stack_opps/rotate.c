@@ -10,3 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
+
+int	rotate_a()
+{
+	ft_printf("ra\n");
+	return (1);
+}
+
+int	rotate_b()
+{
+	ft_printf("rb\n");
+	return (1);
+}
+
+int rotate_r()
+{
+	ft_printf("rr\n");
+	return (1);
+}

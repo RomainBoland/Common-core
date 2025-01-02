@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 09:52:42 by rboland           #+#    #+#             */
-/*   Updated: 2025/01/02 09:52:42 by rboland          ###   ########.fr       */
+/*   Created: 2025/01/02 13:13:28 by rboland           #+#    #+#             */
+/*   Updated: 2025/01/02 13:13:28 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	push_a()
+int	r_rotate_a()
 {
-	ft_printf("pa\n");
+	ft_printf("rra\n");
 	return (1);
 }
 
-int	push_b()
+int	r_rotate_b()
 {
-	ft_printf("pb\n");
+	ft_printf("rrb\n");
 	return (1);
+}
+
+int	r_rotate_r()
+{
+	ft_printf("rrr\n");
+	return;
 }

@@ -6,7 +6,7 @@
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 11:20:55 by rboland           #+#    #+#             */
-/*   Updated: 2024/12/20 22:30:43 by rboland          ###   ########.fr       */
+/*   Updated: 2025/01/02 13:25:00 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				pos;
+	int				*content;
 	struct s_list	*next;
 }	t_list;
+
+
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
