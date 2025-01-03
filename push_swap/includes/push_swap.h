@@ -15,4 +15,12 @@
 
 # include "../libft/includes/libft.h"
 
+typedef struct s_stack
+{
+	int				nb;
+	struct s_stack	*next;
+} t_stack;
+
+void	printf_error(void);
+
 #endif

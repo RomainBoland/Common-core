@@ -12,7 +12,14 @@
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char argv[])
+int	main(int argc, char *argv[])
 {
-	
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	if (argc == 1 || argv[1][0] == NULL)
+		print_error();
+	stack_init(stack_a, argv, argc - 1);
 }

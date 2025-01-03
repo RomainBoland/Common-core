@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 09:52:42 by rboland           #+#    #+#             */
-/*   Updated: 2025/01/02 09:52:42 by rboland          ###   ########.fr       */
+/*   Created: 2025/01/03 13:40:13 by rboland           #+#    #+#             */
+/*   Updated: 2025/01/03 13:40:13 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-static void	push(t_stack **src, t_stack **dest)
+void	print_error(void)
 {
-	t_stack	*tmp;
-
-	if (*src == NULL)
-		return ;
-	tmp = (*src)->next;
-	(*src)->next = *dest;
-	*dest = *src;
-	*src = tmp;
-}
-
-void	push_a(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
+	ft_printf("Error\n");
 }

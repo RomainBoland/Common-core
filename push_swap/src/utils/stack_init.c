@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rboland <rboland@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 09:52:42 by rboland           #+#    #+#             */
-/*   Updated: 2025/01/02 09:52:42 by rboland          ###   ########.fr       */
+/*   Created: 2025/01/03 13:17:31 by rboland           #+#    #+#             */
+/*   Updated: 2025/01/03 13:17:31 by rboland          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	push(t_stack **src, t_stack **dest)
+t_stack	*ft_lstnew(int nb)
 {
-	t_stack	*tmp;
+	t_stack	*new;
 
-	if (*src == NULL)
-		return ;
-	tmp = (*src)->next;
-	(*src)->next = *dest;
-	*dest = *src;
-	*src = tmp;
+	new = malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->nb = nb;
+	new->next = NULL;
+	return (new);
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+int	stack_init(t_stack stack_a, char *argv[], int nb_arg)
 {
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
-}
-
-void	push_b(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
+	
 }
